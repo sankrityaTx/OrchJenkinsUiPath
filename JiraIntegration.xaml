@@ -1,0 +1,352 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="JiraIntegration" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:aj="clr-namespace:Atlassian.Jira;assembly=Atlassian.Jira" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ubt="clr-namespace:UiPath.BAF.Telemetry;assembly=UiPath.Jira" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uj="clr-namespace:UiPathTeam.JiraGet;assembly=UiPathTeam.JiraGet" xmlns:uja="clr-namespace:UiPath.Jira.Activities;assembly=UiPath.Jira.Activities" xmlns:ujm="clr-namespace:UiPath.Jira.Models;assembly=UiPath.Jira" xmlns:usa="clr-namespace:UiPath.Shared.Activities;assembly=UiPath.Jira.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Project" Type="InArgument(x:String)" />
+    <x:Property Name="jiraUser" Type="InArgument(aj:JiraUser)" />
+    <x:Property Name="jiraProject" Type="InArgument(ujm:Project)" />
+  </x:Members>
+  <this:JiraIntegration.jiraUser>
+    <InArgument x:TypeArguments="aj:JiraUser" />
+  </this:JiraIntegration.jiraUser>
+  <this:JiraIntegration.jiraProject>
+    <InArgument x:TypeArguments="ujm:Project" />
+  </this:JiraIntegration.jiraProject>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>552.666666666667,1356</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>RestSharp</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.JiraSoftware.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.JiraSoftware.Models</x:String>
+      <x:String>UiPath.JiraSoftware.Activities.Projects</x:String>
+      <x:String>UiPath.JiraSoftware.Activities.CrudActivities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.BAF.Telemetry</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Jira.Activities.Enums.JiraApplicationScope</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>Atlassian.Jira</x:String>
+      <x:String>UiPath.Jira.Activities</x:String>
+      <x:String>UiPath.Jira.Activities.Enums.Project</x:String>
+      <x:String>UiPath.Jira.Models</x:String>
+      <x:String>UiPath.Jira.Activities.Activities</x:String>
+      <x:String>UiPathTeam.JiraGet</x:String>
+      <x:String>UiPathTeam.JiraGet.Properties</x:String>
+      <x:String>UiPathTeam.JiraGet.Activities</x:String>
+      <x:String>XamlGeneratedNamespace</x:String>
+      <x:String>UiPath.BAF.Activities.Design.View</x:String>
+      <x:String>UiPath.BAF.Activities.Design.View.Models</x:String>
+      <x:String>UiPath.BAF.Activities.Design.View.Enums</x:String>
+      <x:String>UiPath.BAF.Activities.Design.ViewModel</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Utilities</x:String>
+      <x:String>UiPath.BAF.Activities.Design.UserControls</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Resources</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Models</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Models.Breadcrumbs</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Proxy</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Metadata</x:String>
+      <x:String>UiPath.BAF.Activities.Design.LangInvariant</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Designer.Activity</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Designer.Scope</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Converters</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Controls</x:String>
+      <x:String>UiPath.BAF.Activities.Design.GenericWindows.View</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Common.View</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Common.ViewModel</x:String>
+      <x:String>UiPath.BAF.Activities.Design.Common.Model</x:String>
+      <x:String>UiPath.BAF.Activities.Design.ActivityModel</x:String>
+      <x:String>UiPath.Shared.Activities.Design.Services</x:String>
+      <x:String>UiPath.Shared.Activities.Design.Editors</x:String>
+      <x:String>UiPath.Shared.Activities.Design.Converters</x:String>
+      <x:String>UiPath.Shared.Activities.Design.Controls</x:String>
+      <x:String>UiPath.Shared.Activities.Design.Animations</x:String>
+      <x:String>UiPath.Jira.Activities.Design</x:String>
+      <x:String>UiPath.Jira.Activities.Design.Properties</x:String>
+      <x:String>UiPath.Jira.Activities.Design.Designers</x:String>
+      <x:String>HttpClientFramework</x:String>
+      <x:String>HttpClientFramework.Apis</x:String>
+      <x:String>HttpClientFramework.Apis.Logging</x:String>
+      <x:String>HttpClientFramework.Apis.Json</x:String>
+      <x:String>HttpClientFramework.Apis.Http</x:String>
+      <x:String>HttpClientFramework.Apis.Discovery</x:String>
+      <x:String>HttpClientFramework.Apis.Auth</x:String>
+      <x:String>HttpClientFramework.Apis.Auth.OAuth2</x:String>
+      <x:String>HttpClientFramework.Apis.Auth.OAuth2.Responses</x:String>
+      <x:String>HttpClientFramework.Apis.Auth.OAuth2.Requests</x:String>
+      <x:String>HttpClientFramework.Apis.Auth.OAuth2.Flows</x:String>
+      <x:String>HttpClientFramework.Apis.Util</x:String>
+      <x:String>HttpClientFramework.Apis.Util.Store</x:String>
+      <x:String>HttpClientFramework.Apis.Upload</x:String>
+      <x:String>HttpClientFramework.Apis.Services</x:String>
+      <x:String>HttpClientFramework.Apis.Requests</x:String>
+      <x:String>HttpClientFramework.Apis.Requests.Parameters</x:String>
+      <x:String>HttpClientFramework.Apis.Download</x:String>
+      <x:String>UiPath.BAF.ServiceInterfaces</x:String>
+      <x:String>UiPath.BAF.SampleData</x:String>
+      <x:String>UiPath.BAF.Protocols.Rest</x:String>
+      <x:String>UiPath.BAF.Protocols.Http</x:String>
+      <x:String>UiPath.BAF.Properties</x:String>
+      <x:String>UiPath.BAF.Models</x:String>
+      <x:String>UiPath.BAF.Models.Views</x:String>
+      <x:String>UiPath.BAF.Models.SharedModel</x:String>
+      <x:String>UiPath.BAF.Models.Response</x:String>
+      <x:String>UiPath.BAF.Models.Entity</x:String>
+      <x:String>UiPath.BAF.Models.CrudOperation</x:String>
+      <x:String>UiPath.BAF.Models.Connection</x:String>
+      <x:String>UiPath.BAF.Models.Connection.Authentication.OAuth</x:String>
+      <x:String>UiPath.BAF.Models.Connection.Authentication.Enums</x:String>
+      <x:String>UiPath.BAF.Models.Connection.Authentication.BasicAuth</x:String>
+      <x:String>UiPath.BAF.Models.Connection.APIConnection</x:String>
+      <x:String>UiPath.BAF.Models.Annotations</x:String>
+      <x:String>UiPath.BAF.Exceptions</x:String>
+      <x:String>UiPath.BAF.Utilities</x:String>
+      <x:String>UiPath.BAF.Utilities.Interfaces</x:String>
+      <x:String>UiPath.BAF.Enums</x:String>
+      <x:String>UiPath.BAF.Resources.Properties</x:String>
+      <x:String>UiPath.Jira.Util</x:String>
+      <x:String>UiPath.Jira.Service</x:String>
+      <x:String>UiPath.Jira.ServiceFactory</x:String>
+      <x:String>UiPath.Jira.Properties</x:String>
+      <x:String>UiPath.Jira.OAuth2</x:String>
+      <x:String>UiPath.Jira.OAuth2.Responses</x:String>
+      <x:String>UiPath.Jira.OAuth2.Requests</x:String>
+      <x:String>UiPath.Jira.OAuth2.Flows</x:String>
+      <x:String>UiPath.Jira.Models.Service</x:String>
+      <x:String>UiPath.Jira.Models.Auth</x:String>
+      <x:String>UiPath.BAF.Activities</x:String>
+      <x:String>UiPath.BAF.Activities.Utilities</x:String>
+      <x:String>UiPath.BAF.Activities.LocalizedAttribute</x:String>
+      <x:String>UiPath.BAF.Activities.ContextModel</x:String>
+      <x:String>UiPath.BAF.Activities.Constraints</x:String>
+      <x:String>UiPath.Shared.Activities.Utilities</x:String>
+      <x:String>UiPath.Shared.Activities.Localization</x:String>
+      <x:String>UiPath.Shared.Activities.Contracts</x:String>
+      <x:String>UiPath.Jira.Activities.Properties</x:String>
+      <x:String>UiPath.Jira.Activities.Enums</x:String>
+      <x:String>UiPath.Jira.Activities.Enums.Filer</x:String>
+      <x:String>UiPath.Jira.Activities.Enums.Dashboard</x:String>
+      <x:String>UiPath.Jira.Activities.Enums.Component</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>RestSharp</AssemblyReference>
+      <AssemblyReference>UiPath.JiraSoftware.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.JiraSoftware</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Jira</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Jira.Activities</AssemblyReference>
+      <AssemblyReference>Atlassian.Jira</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPathTeam.JiraGet</AssemblyReference>
+      <AssemblyReference>UiPathTeam.JiraGet.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Activities.Core.Presentation</AssemblyReference>
+      <AssemblyReference>UiPath.Jira.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="JiraIntegration" sap:VirtualizedContainerService.HintSize="552,1291.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uj:JiraGet_Application_Scope ClientID="{x:Null}" ClientIDProd="{x:Null}" ClientSecret="{x:Null}" ClientSecretProd="{x:Null}" ExistingAuth="{x:Null}" ExistingService="{x:Null}" Password="{x:Null}" PasswordProd="{x:Null}" RefreshToken="{x:Null}" RefreshTokenProd="{x:Null}" ResponseAuth="{x:Null}" ResponseService="{x:Null}" TokenAPIProd="{x:Null}" UserNameProd="{x:Null}" ValidConnection="{x:Null}" Connection_Status="Close_at_scope_end" DisplayName="JiraGet Application Scope" EndPoint="https://testingxperts1.atlassian.net/" EnvironmentType="Design_and_Test" sap:VirtualizedContainerService.HintSize="510,1199.33333333333" sap2010:WorkflowViewState.IdRef="JiraGet_Application_Scope_1" InvalidCommand="No" TokenAPI="UQ7MBV0MG473C3viEwT3AD16" UserName="sankritya95@gmail.com">
+      <uj:JiraGet_Application_Scope.Body>
+        <ActivityAction x:TypeArguments="uj:JiraGetProperty">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="uj:JiraGetProperty" Name="JiraGetScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,1089.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uja:JiraScope ClientID="{x:Null}" ClientSecret="{x:Null}" Connection="{x:Null}" ContinueOnError="{x:Null}" JiraConnection="{x:Null}" AuthenticationType="Api Token" DisplayName="Jira Scope" sap:VirtualizedContainerService.HintSize="434,997.333333333333" sap2010:WorkflowViewState.IdRef="JiraScope_1" ServerURL="https://testingxperts1.atlassian.net/" UserName="sankritya95@gmail.com">
+              <uja:JiraScope.ApiToken>
+                <InArgument x:TypeArguments="ss:SecureString">
+                  <mca:CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">new System.Net.NetworkCredential("", "UQ7MBV0MG473C3viEwT3AD16").SecurePassword</mca:CSharpValue>
+                </InArgument>
+              </uja:JiraScope.ApiToken>
+              <uja:JiraScope.Body>
+                <ActivityAction x:TypeArguments="usa:IObjectContainer">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="usa:IObjectContainer" Name="ScopeActivity" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,911.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="ss:SecureString" Name="password" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uja:CreateUser ContinueOnError="{x:Null}" DisplayName="Create User" DisplayName1="ABCD" EmailAddress="sankritya95@gmail.com" sap:VirtualizedContainerService.HintSize="334,134.666666666667" sap2010:WorkflowViewState.IdRef="CreateUser_1" SendNotification="False">
+                      <uja:CreateUser.Password>
+                        <InArgument x:TypeArguments="ss:SecureString">
+                          <mca:CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">new System.Net.NetworkCredential("", "testing@1").SecurePassword</mca:CSharpValue>
+                        </InArgument>
+                      </uja:CreateUser.Password>
+                      <uja:CreateUser.TelemetryProperties>
+                        <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                      </uja:CreateUser.TelemetryProperties>
+                      <uja:CreateUser.User>
+                        <OutArgument x:TypeArguments="aj:JiraUser">
+                          <mca:CSharpReference x:TypeArguments="aj:JiraUser" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">jiraUser</mca:CSharpReference>
+                        </OutArgument>
+                      </uja:CreateUser.User>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uja:CreateUser>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+                      <ui:LogMessage.Message>
+                        <InArgument x:TypeArguments="x:Object">
+                          <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">"user created: "+ jiraUser</mca:CSharpValue>
+                        </InArgument>
+                      </ui:LogMessage.Message>
+                    </ui:LogMessage>
+                    <uja:CreateProject ContinueOnError="{x:Null}" Description="{x:Null}" AssigneeType="UNASSIGNED" DisplayName="Create Project" sap:VirtualizedContainerService.HintSize="334,282.666666666667" sap2010:WorkflowViewState.IdRef="CreateProject_1" ProjectKey="OJTP" ProjectName="Orch_jenkins_TestAutoProject" ProjectTemplateKey="Kanban Classic" ProjectTypeKey="Software">
+                      <uja:CreateProject.Project>
+                        <OutArgument x:TypeArguments="ujm:Project">
+                          <mca:CSharpReference x:TypeArguments="ujm:Project" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">jiraProject</mca:CSharpReference>
+                        </OutArgument>
+                      </uja:CreateProject.Project>
+                      <uja:CreateProject.ProjectLead>
+                        <InArgument x:TypeArguments="aj:JiraUser">
+                          <mca:CSharpValue x:TypeArguments="aj:JiraUser" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">jiraUser</mca:CSharpValue>
+                        </InArgument>
+                      </uja:CreateProject.ProjectLead>
+                      <uja:CreateProject.TelemetryProperties>
+                        <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+                      </uja:CreateProject.TelemetryProperties>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </uja:CreateProject>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
+                      <ui:LogMessage.Message>
+                        <InArgument x:TypeArguments="x:Object">
+                          <mca:CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">"Project Created: jiraProject.ToString"</mca:CSharpValue>
+                        </InArgument>
+                      </ui:LogMessage.Message>
+                    </ui:LogMessage>
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,154" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">
+                                <mca:CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">in_Project</mca:CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                          </Assign>
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
+                  </Sequence>
+                </ActivityAction>
+              </uja:JiraScope.Body>
+              <uja:JiraScope.TelemetryProperties>
+                <scg:Dictionary x:TypeArguments="ubt:TelemetryGroup, scg:IDictionary(x:String, x:String)" />
+              </uja:JiraScope.TelemetryProperties>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uja:JiraScope>
+          </Sequence>
+        </ActivityAction>
+      </uj:JiraGet_Application_Scope.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </uj:JiraGet_Application_Scope>
+  </Sequence>
+</Activity>
